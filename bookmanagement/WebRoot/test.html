@@ -1,0 +1,261 @@
+<%@page contentType="text/html; charset=utf-8"
+   pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图书馆登录</title>
+	<style type="text/css">
+	body{
+	 background-color:#8e7979;
+	}
+	*{
+	margin:0;
+	padding:0;
+	}
+  input{
+        margin-top: 8px;
+        margin-left: 10px;
+      }
+      
+   
+     .a1{
+          position: absolute;
+          top: 273px;
+          left: 705px;
+          font-size: 12px;
+          color: red;
+          visibility: hidden;
+          opacity: 1;
+          
+        }
+      .a2{
+
+           position: absolute;
+          top: 302px;
+          left: 705px;
+          font-size: 12px;
+          color: red;
+          visibility: hidden;
+          opacity: 1;
+
+      }
+
+      .a3{
+
+         position: absolute;
+          top: 337px;
+          left: 705px;
+          font-size: 12px;
+          color: red;
+          visibility: hidden;
+          opacity: 1;
+      }
+      
+       .a4{
+
+         position: absolute;
+          top: 337px;
+          left: 705px;
+          font-size: 12px;
+          color: red;
+          visibility: hidden;
+          opacity: 1;
+      }
+      .span{
+      
+          color:red;
+      }
+
+    
+      
+	#d0{
+	      height:668px;
+          width:900px;	
+          border:1px solid #f8f;
+          background-size:100% 100%;
+          background-repeat: no-repeat;
+          margin:0 auto;
+	   }
+	
+      input
+      {
+      	margin-top: 8px;
+      	
+      }
+      #d2{
+      width:900px;
+      height:181px;
+      background-image:url(images/header.jpg)
+      }
+      #d3{
+      height:486px;
+      width:548px;
+      background-size:100% 100%;
+      background-image:url(images/leftbg.png);
+      float:left;
+      }
+      #d1
+      {
+        padding-top: 39px;
+        width: 350px;
+        height: 250px;
+        border: 1px solid #d1e8ff;
+        margin:0 auto;
+        color:red;
+        background-image:url(images/2.png);
+        background-size:100% 100%;
+        float: left;
+      }
+      #d4{
+      	width:352px;
+      	height:196px;
+      	background:red;
+      	float:left;
+      	background-image:url(images/rightbg.png);
+      	background-size:100% 100%;
+      }
+      #i1{
+       padding-top:110px;
+       color:#f8f;
+      }
+	</style>
+	<script type="text/javascript">
+
+function isStudentNo(str) {
+  var reg=/^[a-zA-Z0-9]\w{5,17}$/;   /*定义验证表达式*/
+  return reg.test(str);     /*进行验证*/
+}
+
+  function check(){
+    
+   
+
+
+  var name = document.getElementById("1").value;
+
+    if(name == ""){
+
+        // alert("姓名不能为空！");
+        // 
+        // document.getElementById("1").innerHTML="姓名不能为空！";
+        // document.write("<span>姓名不能为空！</span>");
+        // 
+        // lable.text="姓名不能为空！";
+        document.getElementById("label1").style.visibility="visible";
+
+
+        return false;
+        }
+        if(name.length<6)
+        {
+            alert("姓名长度必须大于6！");
+            return false;
+
+        }
+
+         if(name.length>20)
+        {
+            alert("姓名长度必须小于20！");
+          return false;
+        }
+
+
+      var name = document.getElementById("2").value;
+      var qrename = document.getElementById("4").value;
+        if(name == "" && qrename== ""){
+        // alert("密码不能为空！");
+         document.getElementById("label2").style.visibility="visible";
+        return false;
+        }
+
+          if(name.length<6)
+        {
+            alert("密码长度必须大于6！");
+            return false;
+
+        }
+         if(name.length>20)
+        {
+            alert("密码长度必须小于20！");
+          return false;
+        }
+
+        if(!isStudentNo(document.getElementById("2").value)){
+              alert("密码必须由字母或数字或下划线组成！");
+              document.getElementById("sno").focus();
+              return false;
+        }
+
+    if(name!=qrename){
+    
+        alert("密码不一致！");
+        return false;
+    
+    }
+
+    
+        var name = document.getElementById("3").value;
+        if(name == ""){
+
+        // alert("电话不能为空！");
+        document.getElementById("label3").style.visibility="visible";
+        return false;
+        }
+          if(name.length!=11)
+        {
+            alert("电话长度必须为11位！");
+            return false;
+        } 
+
+
+        
+        return true;
+     
+}
+
+      function miss()
+      {
+        document.getElementById("label1").style.visibility="hidden";
+        document.getElementById("label2").style.visibility="hidden";
+        document.getElementById("label3").style.visibility="hidden";
+        document.getElementById("label4").style.visibility="hidden";
+        return true;
+      }
+
+</script>
+
+
+</head>
+<body >
+<div id="d0">
+  <div id="d2"><H1 id="i1">欢迎使用图书馆系统</H1></div>
+  <div id="d3"><center>时间是条狗！<br>人丑就该多读书！</div>
+  <div id="d1" align="center">
+  <h3>注册</h3>
+
+  <form action="register"  onsubmit="return check();"  method="post"  >
+  <label class="a1"  for="1" id="label1" >请输入用户名</label>
+  <span>  用&nbsp;&nbsp;户&nbsp;名:</span>
+  <input type="text" id="1" name="username"  maxlength="20"  onclick="return miss();">
+  <br>
+  <label class="a2"  for="2" id="label2" >请输入密码</label>
+  <span align="left">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</span>
+  <input type="password" name="password" id="2" maxlength="20"  onclick="return miss();"><br>
+  
+  <label class="a4"  for="4" id="label4" >请输入密码</label>
+  <span>确认密码:</span><input type="password" name="qreword" id="4" maxlength="20"  onclick="return miss();"><br>
+  
+  <label class="a3"  for="3" id="label3" >请输入电话</label>
+  <span>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</span><input type="text"  name="phone" id="3"  onclick="return miss();"><br>
+  
+  <input type="submit" value="确定" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="button" value="取消" onclick="script:window.location.href='login.jsp'">
+  <br/><br/>
+  <span class="span"> ${msg}</span> 
+  </form>
+  </div>
+	<div id = "d4"></div>
+	</div>
+</body>
+<html>
